@@ -1,0 +1,78 @@
+---
+---
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="/" class="footer-logo">J <em>Wanders</em> Off Again</a>
+      <p class="footer-tagline">
+        Real travel. Honest stories.<br/>All the messy bits included.
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 J Wanders Off Again. All rights reserved.</span>
+    <span class="footer-note">"Still figuring it out, one trip at a time."</span>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: var(--ink);
+    padding: 3.5rem 6% 2rem;
+  }
+
+  .footer-top {
+    padding-bottom: 2.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-logo);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0;
+    word-spacing: -0.05em;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-logo em { font-style: italic; color: var(--denim-mid); }
+
+  .footer-tagline {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.75;
+    max-width: 300px;
+  }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.18); }
+
+  .footer-note {
+    font-size: 0.7rem;
+    font-style: italic;
+    font-family: var(--font-serif);
+    color: rgba(255,255,255,0.18);
+  }
+
+  @media (max-width: 600px) {
+    footer { padding: 3rem 5% 1.5rem; }
+    .footer-top { flex-direction: column; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+</style>

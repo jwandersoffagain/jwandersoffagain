@@ -1,0 +1,45 @@
+---
+---
+<nav>
+  <a href="/" class="nav-logo">J <em>Wanders</em> Off Again</a>
+  <a href="/" class="nav-back">← Back to blog</a>
+</nav>
+
+<style>
+  nav {
+    position: sticky;
+    top: 0; z-index: 100;
+    height: 64px;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(248, 246, 241, 0.96);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--ivory-line);
+  }
+
+  .nav-logo {
+    font-family: var(--font-logo);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo em { font-style: italic; color: var(--denim); }
+
+  .nav-back {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-back:hover { color: var(--denim); }
+</style>

@@ -1,0 +1,42 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ivory:       #F8F6F1;
+  --ivory-warm:  #F0EDE6;
+  --ivory-line:  #E8E2D8;
+  --white:       #FFFFFF;
+  --denim:       #5A7E9E;
+  --denim-h:     #486A88;
+  --denim-pale:  #E4EEF5;
+  --denim-mid:   #7A9EC4;
+  --blush:       #D4A8B0;
+  --blush-pale:  #FAEFF0;
+  --blush-mid:   #E4B8C0;
+  --ink:         #1A2028;
+  --ink-mid:     #4A5560;
+  --ink-soft:    #8A9098;
+  --font-serif:  'Cormorant Garamond', Georgia, serif;
+  --font-sans:   'Jost', sans-serif;
+  --font-logo:   'Gilda Display', Georgia, serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
