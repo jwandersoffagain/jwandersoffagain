@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3TDPYD2LD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F3TDPYD2LD');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>New York City | J Wanders Off Again</title>
+  <meta name="description" content="A 2-night romantic weekend in New York City — the food, the walks, the viral spots worth the hype (and the ones that weren't), and the honest CAD cost of doing NYC as a Canadian couple."/>
+
+  <!-- Open Graph / Pinterest -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="J Wanders Off Again"/>
+  <meta property="og:title" content="New York City | J Wanders Off Again"/>
+  <meta property="og:description" content="A 2-night romantic weekend in New York City — the food, the walks, the viral spots worth the hype (and the ones that weren't), and the honest CAD cost of doing NYC as a Canadian couple."/>
+  <meta property="og:url" content="https://jwandersoffagain.pages.dev/nyc-post.html"/>
+  <meta property="og:image" content="https://jwandersoffagain.pages.dev/images/PXL_20260503_001952153.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="article:published_time" content="2026-05-04"/>
+  <meta property="article:tag" content="New York City"/>
+  <meta property="article:tag" content="Travel"/>
+  <meta property="article:tag" content="Romantic Getaway"/>
+
+  <!-- Pinterest-specific -->
+  <meta name="pinterest-rich-pin" content="true"/>
+  <meta name="pinterest:description" content="2 nights in NYC as a Canadian couple — what we ate, where we stayed, and the honest cost breakdown including that brutal exchange rate."/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ivory:      #F8F6F1;
+      --white:      #FFFFFF;
+      --line:       #E8E2D8;
+      --denim:      #5A7E9E;
+      --denim-h:    #486A88;
+      --denim-pale: #E4EEF5;
+      --denim-mid:  #7A9EC4;
+      --blush:      #D4A8B0;
+      --blush-pale: #FAEFF0;
+      --ink:        #1A2028;
+      --ink-mid:    #4A5560;
+      --ink-soft:   #8A9098;
+      --serif:      'Cormorant Garamond', Georgia, serif;
+      --sans:       'Jost', sans-serif;
+      --logo:       'Gilda Display', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--ivory); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.75; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav { position: sticky; top: 0; z-index: 100; height: 64px; padding: 0 6%; display: flex; align-items: center; justify-content: space-between; background: rgba(248,246,241,0.96); backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); }
+    .nav-logo { font-family: var(--logo); font-size: 1.2rem; font-weight: 400; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo em { font-style: italic; color: var(--denim); }
+    .nav-back { font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--denim); }
+
+    /* ── HERO ── */
+    .hero { height: 70vh; min-height: 420px; background: center center/cover no-repeat; position: relative; display: flex; align-items: flex-end; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,32,40,0.82) 0%, rgba(26,32,40,0.1) 60%, transparent 100%); }
+    .hero-content { position: relative; z-index: 2; padding: 3rem 6%; width: 100%; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--blush); color: var(--white); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 50px; margin-bottom: 1rem; }
+    .hero-title { font-family: var(--serif); font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 300; line-height: 1.05; color: var(--white); letter-spacing: -0.02em; }
+    .hero-title em { font-style: italic; color: var(--blush); }
+    .hero-meta { margin-top: 1rem; display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.78rem; color: rgba(255,255,255,0.65); letter-spacing: 0.06em; }
+
+    /* ── POST BODY ── */
+    .post-wrap { max-width: 100%; margin: 0 auto; padding: 4rem 8%; }
+    .post-body p { font-size: 0.97rem; color: var(--ink-mid); line-height: 1.92; margin-bottom: 1.4rem; }
+    .post-body p strong { color: var(--ink); font-weight: 500; }
+
+    /* ── SECTION HEADERS ── */
+    .post-section { margin: 3.5rem 0 1.5rem; }
+    .post-section-label { font-size: 0.67rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--denim); margin-bottom: 0.5rem; }
+    .post-section h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; line-height: 1.15; color: var(--ink); letter-spacing: -0.01em; }
+    .post-section h2 em { font-style: italic; color: var(--denim); }
+
+    /* ── IMAGES ── */
+    .post-img { width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 14px; margin: 2.5rem auto; display: block; box-shadow: 0 8px 32px rgba(26,32,40,0.12); background: center center/cover no-repeat; }
+    .post-img-grid { display: flex; justify-content: center; gap: 0.5rem; margin: 2.5rem auto; }
+    .post-img-grid .post-img { width: 50%; max-width: 50%; flex-shrink: 0; aspect-ratio: 4/3; margin: 0; }
+    .post-img-caption { font-size: 0.75rem; color: var(--ink-soft); text-align: center; margin-top: -1.5rem; margin-bottom: 2rem; font-style: italic; }
+
+    /* ── TIP / CALLOUT BOX ── */
+    .post-tip { margin: 2rem 0; padding: 1.2rem 1.5rem; background: var(--denim-pale); border-left: 3px solid var(--denim); border-radius: 0 10px 10px 0; }
+    .post-tip-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--denim); margin-bottom: 0.4rem; }
+    .post-tip p { font-size: 0.92rem !important; color: var(--ink) !important; margin-bottom: 0 !important; }
+    .post-tip-blush { background: var(--blush-pale); border-left-color: var(--blush); }
+    .post-tip-blush .post-tip-label { color: var(--blush); }
+    .post-tip-blush p { margin-bottom: 0.9rem !important; }
+    .post-tip-blush p:last-child { margin-bottom: 0 !important; }
+
+    /* ── COST TABLE ── */
+    .cost-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.88rem; }
+    .cost-table th { text-align: left; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); padding: 0.5rem 0; border-bottom: 1px solid var(--line); }
+    .cost-table td { padding: 0.65rem 0; border-bottom: 1px solid var(--line); color: var(--ink-mid); }
+    .cost-table td:last-child, .cost-table th:last-child { text-align: right; }
+    .cost-table td:nth-child(2), .cost-table th:nth-child(2) { text-align: right; color: var(--denim); font-weight: 500; }
+    .cost-table td:last-child { color: var(--ink-soft); font-weight: 400; text-align: right; }
+    .cost-table th:last-child { color: var(--ink-soft); }
+    .cost-table tr:last-child td { border-bottom: none; font-weight: 500; color: var(--ink); }
+
+    /* ── DIVIDER ── */
+    .post-divider { display: flex; align-items: center; gap: 1.5rem; margin: 3rem 0; }
+    .post-divider-line { flex: 1; height: 1px; background: var(--line); }
+    .post-divider-mark { color: var(--blush); font-size: 0.9rem; opacity: 0.7; }
+
+    /* ── FOOTER ── */
+    .post-footer { padding: 4rem 6%; background: var(--white); text-align: center; border-top: 1px solid var(--line); }
+    .post-footer p { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 1.5rem; }
+    .btn-back { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--denim); color: var(--white); text-decoration: none; padding: 0.82rem 2rem; border-radius: 50px; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em; transition: all 0.22s; box-shadow: 0 5px 20px rgba(90,126,158,0.22); }
+    .btn-back:hover { background: var(--denim-h); transform: translateY(-2px); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .hero-content > * { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) both; }
+    .hero-content > *:nth-child(1){animation-delay:0.05s}
+    .hero-content > *:nth-child(2){animation-delay:0.18s}
+    .hero-content > *:nth-child(3){animation-delay:0.32s}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:640px){
+      .post-wrap { padding: 3rem 5%; }
+      .post-img { aspect-ratio: 16/9; }
+      .post-img-grid { flex-direction: column; }
+      .post-img-grid .post-img { width: 100%; max-width: 100%; aspect-ratio: 4/3; }
+      .hero { height: 55vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="index.html" class="nav-logo">J <em>Wanders</em> Off Again</a>
+    <a href="index.html" class="nav-back">← Back to blog</a>
+  </nav>
+
+  <!-- ── HERO — Times Square at night ── -->
+  <div class="hero" style="background-image:url('images/PXL_20260503_001952153.jpg');">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">💑 Romantic Getaway · New York City</div>
+      <h1 class="hero-title">
+        New York City<br>
+        <em>a weekend just for us.</em>
+      </h1>
+      <div class="hero-meta">
+        <span>May 2026</span>
+        <span>·</span>
+        <span>5 min read</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       POST BODY
+  ══════════════════════════════════════════════ -->
+  <div class="post-wrap">
+    <div class="post-body">
+
+      <!-- ── INTRO ── -->
+      <p>We landed in New York with no plan, no itinerary, no reservations, no agenda. My partner wanted to shop and I was happy to follow. We are not typically the type to just wing it (before kids and after kids). It felt a little strange at first, but it felt right.</p>
+
+      <p>Fair warning: the exchange rate right now as a Canadian is brutal.</p>
+
+      <div class="post-divider"><div class="post-divider-line"></div><div class="post-divider-mark">✦</div><div class="post-divider-line"></div></div>
+
+      <!-- ── DAY 1 ── -->
+      <div class="post-section">
+        <div class="post-section-label">Day 1</div>
+        <h2>Wraps, shopping, <em>and yes, Times Square</em></h2>
+      </div>
+
+      <p>We landed, dropped our bags and headed straight out. First stop was <strong>Lenwich</strong> because it kept popping up on my social media and I had to try it. We got the chicken Caesar wrap on a spinach wrap. It was so good. Fully stuffed, not overly dressed, every bite had something in it. Would definitely go back and if I am going to be completely honest, this wrap lives rent free in my head. I think about it a lot.</p>
+
+      <div class="post-img" style="background-image:url('images/PXL_20260502_155132046.jpg'); background-position: center center;" role="img" aria-label="Lenwich deli storefront in New York City"></div>
+      <p class="post-img-caption">Lenwich. Classic New York heroes since 1989. It lived up to it.</p>
+
+      <p>After lunch we took the <strong>M103 bus</strong> down to Lower Manhattan to explore and do some shopping. If you haven't used the NYC bus system, it's a great alternative to the subway. Don't always assume the subway is faster, though sometimes the bus beats it.</p>
+
+      <p>That evening we made our way to <strong>Times Square</strong>. Look, it's a tourist trap. I should probably tell you to avoid it at all costs. It is crowded, overstimulating, and you can very easily get overwhelmed. But every single time I go to NYC, I always end up walking through Times Square because for me personally, you haven't been to NYC without passing by. No regrets.</p>
+
+      <div class="post-img" style="background-image:url('images/PXL_20260503_003129546.jpg'); background-position: center 30%;" role="img" aria-label="HOPE sculpture lit up at night in New York City"></div>
+      <p class="post-img-caption">We stumbled on this near Times Square. The word HOPE in giant red letters at midnight. Felt like the right thing to see.</p>
+
+      <div class="post-tip">
+        <div class="post-tip-label">🚌 Getting around tip</div>
+        <p>The M103 bus runs from Harlem all the way down to Lower Manhattan and costs the same as the subway. You get to see the city as you ride. Tap your credit card and go.</p>
+      </div>
+
+      <div class="post-divider"><div class="post-divider-line"></div><div class="post-divider-mark">✦</div><div class="post-divider-line"></div></div>
+
+      <!-- ── DAY 2 ── -->
+      <div class="post-section">
+        <div class="post-section-label">Day 2</div>
+        <h2>Rockefeller, bagels, pizza, <em>and the best meal of the trip</em></h2>
+      </div>
+
+      <p>We started the morning at <strong>Rockefeller Center</strong>. St. Patrick's Cathedral, the Atlas statue, Fifth Avenue. We've been up the Top of the Rock before on a previous NYC trip so we didn't feel the need to go up again but walking around that area is worth it on its own. St. Patrick's Cathedral is something else. I did not expect to be as taken by it as I was. It just sits there in the middle of all these skyscrapers and it stops you. We stood there for a moment and just looked at it.</p>
+
+      <div class="post-img-grid">
+        <div class="post-img" style="background-image:url('images/PXL_20260503_161200399.jpg'); background-position: center top;" role="img" aria-label="St. Patrick's Cathedral on Fifth Avenue"></div>
+        <div class="post-img" style="background-image:url('images/PXL_20260503_161214894.jpg'); background-position: center center;" role="img" aria-label="Atlas statue at Rockefeller Center"></div>
+      </div>
+      <p class="post-img-caption">St. Patrick's Cathedral and the Atlas statue. Both free. Both worth the stop.</p>
+
+      <p>Next stop was <strong>Apollo Bagels</strong>, another viral bagel spot I've been seeing all over social media. The line was long but it moved quickly. They are really efficient. We ordered the smoked salmon on an everything bagel and the tomato with cream cheese. Both bagels were really good. The tomato added a nice freshness to every bite. The smoked salmon was really good too. The bagel itself was crunchy and they are generous with the cream cheese. Overall, worth the hype.</p>
+
+      <div class="post-img-grid">
+        <div class="post-img" style="background-image:url('images/PXL_20260503_170413735.jpg'); background-position: center center;" role="img" aria-label="Smoked salmon bagel from Apollo Bagels"></div>
+        <div class="post-img" style="background-image:url('images/PXL_20260503_170433572.jpg'); background-position: center center;" role="img" aria-label="Tomato and cream cheese bagel from Apollo Bagels"></div>
+      </div>
+      <p class="post-img-caption">Smoked salmon and tomato. Two very different bagels, both good in their own way.</p>
+
+      <p>We noticed the big crowd at <strong>Upside Pizza</strong> and decided to check it out. We got the Sicilian pepperoni and the spicy vodka slice as recommended by the staff. I'm not a pepperoni kinda gal but that Sicilian pepperoni was really good. The dough was so soft and chewy. The spicy vodka did it for me though. The sauce was amazing and it has a nice kick to it. I would definitely come back again for the spicy vodka. The vibe inside is lively and they were quick and efficient.</p>
+
+      <div class="post-img" style="background-image:url('images/PXL_20260502_180527233.jpg');" role="img" aria-label="Pizza counter at Upside Pizza showing Sicilian slices"></div>
+      <p class="post-img-caption">That lineup outside told us everything we needed to know.</p>
+
+      <div class="post-img" style="background-image:url('images/PXL_20260502_180744645.jpg'); background-position: center center;" role="img" aria-label="Sicilian pepperoni pizza slice from Upside Pizza"></div>
+      <p class="post-img-caption">The Sicilian pepperoni. Still not a pepperoni gal. But I'd get this again.</p>
+
+      <p>After pizza we stopped at <strong>Chacha Matcha</strong> and got their Nitro Matcha to share, around $8 USD. Really good, creamy, just the right amount of sweetness. We kept walking, stopped into <strong>KITH</strong>, and spotted <strong>Levain Bakery</strong> right across the street. There was a big line so we figured why not.</p>
+
+      <div class="post-tip">
+        <div class="post-tip-label">✦ Levain — worth the hype?</div>
+        <p>To be honest, in my personal opinion, it was all right. Nothing that blew me away. We ordered the carrot cake cookie, the caramel coconut, and the chocolate chip walnut, which is their original. We do like the crunch. But I noticed there was a huge influence on Instagram and TikTok around this place and honestly I wasn't going to go out of my way for it. We only stopped because we were literally across the street. Each cookie is about $5.75 USD. And look, I know this is a controversial opinion and the Levain fans will come for me, but that was genuinely my experience.</p>
+      </div>
+
+      <div class="post-img" style="background-image:url('images/PXL_20260502_192146371.jpg'); background-position: center 60%;" role="img" aria-label="Levain Bakery cookie held up outside the bakery"></div>
+      <p class="post-img-caption">The famous Levain cookie. Long line. Decent cookie. That's about it.</p>
+
+      <p>We went to <strong>Soothr</strong>, a Michelin-guided Thai restaurant, for an early dinner. We ordered the crab noodles, beef green curry, and the duck panang curry. The crab noodle was creamy but it was missing something. We asked for their Thai chili oil and boy did it elevate the taste. Amazing. One thing we liked about this dish was the fact that they were generous with the crab meat.</p>
+
+      <div class="post-img" style="background-image:url('images/PXL_20260502_212920875.jpg');" role="img" aria-label="Full spread at Soothr Thai restaurant including green curry and crab noodles"></div>
+      <p class="post-img-caption">The Soothr spread. Ask for the Thai chili oil. It changes everything.</p>
+
+      <p>The beef in the green curry was so tender, fall off the bone. It had the right amount of spice. And then we got the duck panang curry. At this point I was pretty stuffed so I only took a bite. This took the cake for me. The duck was tender but the panang curry. WOW. Nutty, creamy, everything you imagine a good panang should be.</p>
+
+      <div class="post-img" style="background-image:url('images/PXL_20260502_214656527.jpg'); background-position: center 60%;" role="img" aria-label="Duck panang curry at Soothr Thai restaurant"></div>
+      <p class="post-img-caption">The duck panang. One bite and it took the cake. If you go, order it.</p>
+
+      <p>We ended the night with a stop at <strong>Magnolia Bakery</strong>, which is right by our hotel. The line wasn't long which was great, though the staff were a little cold and unwelcoming which caught us off guard. The pie completely made up for it. The texture is more whipped than pudding, which I wasn't expecting. The banana flavour was perfectly balanced, not too strong, not too faint. We understood the hype. It was a genuinely great dessert and I'd go back for it.</p>
+
+      <div class="post-divider"><div class="post-divider-line"></div><div class="post-divider-mark">✦</div><div class="post-divider-line"></div></div>
+
+      <!-- ── WHERE WE STAYED ── -->
+      <div class="post-section">
+        <div class="post-section-label">Where we stayed</div>
+        <h2>Hilton Midtown — <em>the honest review</em></h2>
+      </div>
+
+      <p>We stayed at the <strong>Hilton Midtown</strong> for two nights at $675.35 CAD for 2 nights. Great location, about a 15 minute walk from Times Square. Right when you exit the hotel you'll see Halal Guys to the right. Staff are friendly and the service was impeccable. If anything was ever missing from the room, one call down to the front desk and it was taken care of. They followed up every single time to make sure we actually received it. We would stay here again.</p>
+
+      <div class="post-tip">
+        <div class="post-tip-label">⚠️ One thing to know</div>
+        <p>Our room didn't have a mini fridge which kinda sucked because we had leftover food and nowhere to put it. If having a fridge matters to you, it is worth calling ahead to request a room with one.</p>
+      </div>
+
+      <div class="post-divider"><div class="post-divider-line"></div><div class="post-divider-mark">✦</div><div class="post-divider-line"></div></div>
+
+      <!-- ── WOULD I GO BACK ── -->
+      <div class="post-section">
+        <div class="post-section-label">The honest bit</div>
+        <h2>Would I go back?</h2>
+      </div>
+
+      <p>Maybe. The food scene alone could keep you busy for a month and the energy is unlike anything else. But right now as a Canadian, every dollar you spend there costs you more than it should. It's already an expensive city and the exchange rate makes it even harder to stomach.</p>
+
+      <p>We also had plans to visit the Brooklyn Bridge and explore DUMBO, something we were genuinely looking forward to. But our flight got cancelled and honestly, that is just travel sometimes. With two kids at home, we had to learn to adapt and adjust our plans. Not everything goes the way you imagined and that is okay. Brooklyn and DUMBO will have to wait for next time.</p>
+
+      <p>If we go back, I'd want to explore beyond Midtown. I'd love to spend more time in Brooklyn or even the Bronx, which honestly gets ignored in most travel content. There's a version of New York that feels more real and I haven't found it yet.</p>
+
+      <div class="post-tip post-tip-blush">
+        <div class="post-tip-label">🌸 A personal note</div>
+        <p>We don't do a lot of trips just the two of us. Life with two little ones doesn't always make space for that. This one was for our anniversary. No kids, no to-do list, no agenda.</p>
+
+        <p>I'll be honest though. The mom guilt hit harder on this trip than it did in LA. At least in LA I had the girls around me and it felt easier to justify being away. This time it was just us, and I found myself checking my phone more, missing the kids more, feeling like I had somehow abandoned them even though I knew logically that they were completely fine.</p>
+
+        <p>That feeling is real and I don't think enough people talk about it.</p>
+
+        <p>But I also knew this trip wasn't just good for our relationship. It was good for me. I came home feeling a little more like myself. Sometimes you need to step away to remember who you are outside of the roles you play every single day. NYC gave us that. That's enough for now.</p>
+      </div>
+
+      <div class="post-divider"><div class="post-divider-line"></div><div class="post-divider-mark">✦</div><div class="post-divider-line"></div></div>
+
+      <!-- ── COST BREAKDOWN ── -->
+      <div class="post-section">
+        <div class="post-section-label">What it cost</div>
+        <h2>The full breakdown</h2>
+      </div>
+
+      <table class="cost-table">
+        <tr><th>What</th><th>CAD (approx.)</th><th>USD (approx.)</th></tr>
+        <tr><td>Flights</td><td colspan="2" style="text-align:left; color:var(--ink-soft); font-style:italic;">Not included — what we paid isn't what you'd pay and I don't want to skew the numbers</td></tr>
+        <tr><td>Accommodation — Hilton Midtown, 2 nights</td><td>~$675</td><td>~$493</td></tr>
+        <tr><td>Airport transfer in — Uber shuttle</td><td>~$30</td><td>~$22</td></tr>
+        <tr><td>Airport transfer out — taxi</td><td>~$130</td><td>~$95</td></tr>
+        <tr><td>Lenwich (1 wrap + drink, shared)</td><td>~$27</td><td>~$20</td></tr>
+        <tr><td>Upside Pizza</td><td>~$17</td><td>~$12</td></tr>
+        <tr><td>Chacha Matcha</td><td>~$12</td><td>~$9</td></tr>
+        <tr><td>Levain Bakery (3 cookies)</td><td>~$24</td><td>~$18</td></tr>
+        <tr><td>Magnolia Bakery — banana cream pie</td><td>~$10</td><td>~$7</td></tr>
+        <tr><td>Apollo Bagels (2 bagels)</td><td>~$33</td><td>~$24</td></tr>
+        <tr><td>Soothr dinner</td><td>~$206</td><td>~$150</td></tr>
+        <tr><td>Transit — MTA (7 taps across 2 days)</td><td>~$29</td><td>~$21</td></tr>
+        <tr><td><strong>Total (excl. flights)</strong></td><td><strong>~$1,193</strong></td><td><strong>~$871</strong></td></tr>
+      </table>
+
+      <p>Coming to NYC we took the Uber shuttle which was $22 USD. On our way back, due to our poor planning, we couldn't take the Uber shuttle to the airport. To use the shuttle you have to walk 23 minutes to the pickup spot and at that point we were too tight on time. We ended up paying $95 USD for an Uber directly from the hotel. The shuttle is still a great option, we just didn't plan properly. Give yourself enough time to get to that pickup spot and you'll be fine.</p>
+
+      <div class="post-tip">
+        <div class="post-tip-label">💸 The exchange rate reality</div>
+        <p>We converted $200 CAD through Wise and received $146.51 USD. That's roughly $1 CAD getting you $0.73 USD. NYC is already one of the most expensive cities in the world. Add the Canadian dollar on top and you feel it with every single transaction. If you don't already use Wise for travel spending, it's worth looking into. Much better rates than exchanging cash at the airport. If you'd like to sign up, feel free to use <a href="https://wise.com/invite/ahpc/julien593" target="_blank" rel="noopener" style="color:var(--denim);">my referral link</a>.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── POST FOOTER ── -->
+  <div class="post-footer">
+    <p>If you decide to take a trip to NYC, I hope you find your own version of what makes it good. The one that's a little off the itinerary, a little unexpected. That's the one you'll actually remember.</p>
+    <a href="index.html" class="btn-back">← Back to the blog</a>
+  </div>
+
+</body>
+</html>

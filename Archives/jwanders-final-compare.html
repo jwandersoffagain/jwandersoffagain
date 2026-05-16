@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>J Wanders Off Again — Final Colour Comparison</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Jost', sans-serif; background: #0C1014; font-weight: 300; }
+
+    /* ── SWITCHER ── */
+    .switcher {
+      position: sticky; top: 0; z-index: 200;
+      background: #0C1014;
+      display: flex; align-items: stretch; height: 72px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      overflow-x: auto;
+    }
+
+    .switcher::-webkit-scrollbar { display: none; }
+
+    .tab {
+      flex-shrink: 0;
+      min-width: 90px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.14rem;
+      border: none; cursor: pointer; font-family: 'Jost', sans-serif;
+      color: rgba(255,255,255,0.2); background: transparent;
+      border-bottom: 2px solid transparent; transition: all 0.25s; padding: 0 0.4rem;
+    }
+
+    .sr  { display: flex; gap: 3px; margin-bottom: 0.08rem; }
+    .sw  { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .tg  { font-size: 0.48rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.4; }
+    .tn  { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; }
+    .ts  { font-size: 0.48rem; opacity: 0.32; font-weight: 300; }
+    .tdv  { width: 1px; background: rgba(255,255,255,0.05); flex-shrink: 0; }
+    .tgdv { width: 2px; background: rgba(255,255,255,0.14); flex-shrink: 0; }
+
+    /* Active tab colours */
+    .tab.a1a { color: #C49090; border-bottom-color: #C49090; }
+    .tab.a1c { color: #D4A8A8; border-bottom-color: #D4A8A8; }
+    .tab.a1d { color: #DDB8B8; border-bottom-color: #DDB8B8; }
+    .tab.a1e { color: #E8CCCC; border-bottom-color: #E8CCCC; }
+    .tab.a2a { color: #E0B8A8; border-bottom-color: #E0B8A8; }
+    .tab.a2b { color: #E0C8C4; border-bottom-color: #E0C8C4; }
+    .tab.a3a { color: #C49090; border-bottom-color: #C49090; }
+    .tab.a3b { color: #E0B8A8; border-bottom-color: #E0B8A8; }
+
+    .site { display: none; }
+    .site.visible { display: block; }
+
+    /* ════════════════════════════════
+       ALL PALETTES
+    ════════════════════════════════ */
+
+    /* Denim Blue base shared */
+    .db { --acc: #5A7E9E; --ah: #486A88; --ap: #E4EEF5; --am: #7A9EC4; --bg: #F8F6F1; --bg2: #FFFFFF; --line: #E8E2D8; --ink: #1A2028; --im: #4A5560; --is: #8A9098; --wh: #FFFFFF; --v1: linear-gradient(150deg,#6A90B8,#2A4A70); --v1s: rgba(90,126,158,0.25); --ph: linear-gradient(160deg,#E4EEF5,#90B4D0); --phs: rgba(90,126,158,0.18); --b1: rgba(90,126,158,0.08); }
+
+    /* Warm Slate base shared */
+    .ws { --acc: #6A8090; --ah: #586878; --ap: #E4ECF0; --am: #8AA0B0; --bg: #F6F5F3; --bg2: #FFFFFF; --line: #E4E0D8; --ink: #1C2028; --im: #4A5058; --is: #8A9098; --wh: #FFFFFF; --v1: linear-gradient(150deg,#7A90A8,#3A5060); --v1s: rgba(106,128,144,0.25); --ph: linear-gradient(160deg,#E4ECF0,#98B0C0); --phs: rgba(106,128,144,0.18); --b1: rgba(106,128,144,0.08); }
+
+    /* Dusty Teal base shared */
+    .dt { --acc: #4A8080; --ah: #3A6868; --ap: #E0EEEC; --am: #6AA0A0; --bg: #F5F7F6; --bg2: #FFFFFF; --line: #E0E8E4; --ink: #181E1C; --im: #485050; --is: #889090; --wh: #FFFFFF; --v1: linear-gradient(150deg,#5A9898,#1E5050); --v1s: rgba(74,128,128,0.25); --ph: linear-gradient(160deg,#E0EEEC,#7AACAC); --phs: rgba(74,128,128,0.18); --b1: rgba(74,128,128,0.08); }
+
+    /* Secondary colour overrides */
+    /* 1A — Warm Rose */
+    .s-wr { --sec:#C49090; --sp:#F8ECEC; --sm:#D4A8A8; --st:#FFFFFF; --v2:linear-gradient(150deg,#D4A8A8,#A87070); --v2s:rgba(196,144,144,0.25); --b2:rgba(196,144,144,0.08); }
+    /* 1C — Dusty Blush */
+    .s-db2 { --sec:#D4A8B0; --sp:#FAEFF0; --sm:#E4B8C0; --st:#FFFFFF; --v2:linear-gradient(150deg,#E4B8C0,#B88090); --v2s:rgba(212,168,176,0.25); --b2:rgba(212,168,176,0.08); }
+    /* 1D — Soft Rose */
+    .s-sr { --sec:#DDBBBB; --sp:#FCF2F2; --sm:#ECCCC8; --st:#5A3838; --v2:linear-gradient(150deg,#ECC8C4,#C4A0A0); --v2s:rgba(221,187,187,0.28); --b2:rgba(221,187,187,0.07); }
+    /* 1E — Rose Mist */
+    .s-rm { --sec:#E8CCCC; --sp:#FDF5F5; --sm:#F0D8D8; --st:#5A3838; --v2:linear-gradient(150deg,#F0D8D8,#D0B0B0); --v2s:rgba(232,204,204,0.3); --b2:rgba(232,204,204,0.07); }
+    /* 2A / 3B — Pale Peach */
+    .s-pp { --sec:#E0B8A8; --sp:#FCF0EC; --sm:#ECC8B8; --st:#5A3828; --v2:linear-gradient(150deg,#ECC8B8,#C89880); --v2s:rgba(224,184,168,0.25); --b2:rgba(224,184,168,0.08); }
+    /* 2B — Blush White */
+    .s-bw { --sec:#E0C8C4; --sp:#FCF4F2; --sm:#ECD8D4; --st:#5A3830; --v2:linear-gradient(150deg,#ECD8D4,#C4A8A4); --v2s:rgba(224,200,196,0.28); --b2:rgba(224,200,196,0.07); }
+    /* 3A — Warm Rose (teal version) */
+    .s-wr2 { --sec:#C49090; --sp:#F8ECEC; --sm:#D4A8A8; --st:#FFFFFF; --v2:linear-gradient(150deg,#D4A8A8,#A47070); --v2s:rgba(196,144,144,0.25); --b2:rgba(196,144,144,0.08); }
+
+    /* Compose full palettes */
+    .p1a { }
+    .p1a.db.s-wr { }
+
+    /* All sites share colour vars */
+    .p1a,.p1c,.p1d,.p1e,.p2a,.p2b,.p3a,.p3b {
+      background: var(--bg); color: var(--ink);
+      font-family: 'Jost', sans-serif; line-height: 1.75;
+    }
+
+    /* ── NAV ── */
+    .sn { height:62px; padding:0 6%; display:flex; align-items:center; justify-content:space-between; background:var(--bg); border-bottom:1px solid var(--line); }
+    .sn-logo { font-family:'Gilda Display',serif; font-size:1.2rem; font-weight:400; color:var(--ink); text-decoration:none; letter-spacing:0.02em; }
+    .sn-logo em { font-style:italic; color:var(--acc); }
+    .sn-r { display:flex; align-items:center; gap:1.8rem; }
+    .sn-a { font-size:0.75rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--is); text-decoration:none; transition:color 0.2s; }
+    .sn-a:hover { color:var(--acc); }
+    .sn-b { background:var(--acc); color:var(--wh); text-decoration:none; padding:0.45rem 1.2rem; border-radius:50px; font-size:0.72rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; transition:all 0.2s; }
+    .sn-b:hover { background:var(--ah); transform:translateY(-1px); }
+
+    /* HERO */
+    .sh { padding:5rem 6% 4rem; display:grid; grid-template-columns:1.1fr 1fr; gap:5rem; align-items:center; min-height:calc(90vh - 62px); position:relative; overflow:hidden; }
+    .sh::before { content:''; position:absolute; top:-100px; right:-80px; width:540px; height:540px; background:radial-gradient(circle at 55% 40%, var(--b1) 0%, transparent 62%); pointer-events:none; }
+    .sh::after  { content:''; position:absolute; bottom:-50px; left:8%; width:340px; height:340px; background:radial-gradient(circle, var(--b2) 0%, transparent 58%); pointer-events:none; }
+    .sh-t { position:relative; z-index:2; }
+
+    .sh-k { display:inline-flex; align-items:center; gap:0.6rem; font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sec); font-weight:500; margin-bottom:1.8rem; }
+    .sh-k::before { content:''; width:26px; height:1px; background:var(--sec); }
+
+    /* Very light secondaries need ink contrast */
+    .p1d .sh-k,.p1e .sh-k,.p2b .sh-k { color:var(--is); }
+    .p1d .sh-k::before,.p1e .sh-k::before,.p2b .sh-k::before { background:var(--is); }
+
+    .sh-h { font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,5.2vw,4.8rem); font-weight:300; line-height:1.08; color:var(--ink); margin-bottom:1.5rem; letter-spacing:-0.01em; }
+    .sh-h em { font-style:italic; color:var(--acc); font-weight:300; display:block; }
+    .sh-h .sub { display:block; font-family:'Jost',sans-serif; font-size:0.28em; font-style:normal; font-weight:300; color:var(--is); letter-spacing:0.02em; margin-top:0.7rem; line-height:1.6; }
+
+    .sh-b { font-size:0.97rem; color:var(--im); max-width:420px; line-height:1.9; margin-bottom:2.6rem; }
+    .sh-ac { display:flex; align-items:center; gap:1.2rem; }
+    .sh-btn { background:var(--acc); color:var(--wh); text-decoration:none; padding:0.82rem 2rem; border-radius:50px; font-size:0.82rem; font-weight:500; letter-spacing:0.05em; transition:all 0.22s; box-shadow:0 5px 20px rgba(0,0,0,0.12); }
+    .sh-btn:hover { background:var(--ah); transform:translateY(-2px); }
+    .sh-l { font-size:0.82rem; color:var(--im); text-decoration:none; display:flex; align-items:center; gap:0.35rem; transition:color 0.2s,gap 0.2s; }
+    .sh-l:hover { color:var(--acc); gap:0.6rem; }
+
+    /* VISUAL */
+    .sh-v { position:relative; z-index:2; height:520px; }
+    .sv { position:absolute; border-radius:16px; overflow:hidden; }
+    .sv-m  { top:0; right:0; width:72%; height:62%; background:var(--v1); box-shadow:0 20px 52px var(--v1s); }
+    .sv-lo { bottom:0; left:0; width:60%; height:48%; background:var(--v2); border:3px solid var(--bg); box-shadow:0 12px 36px var(--v2s); }
+    .sv-ac { top:43%; right:3%; width:30%; height:22%; background:var(--bg); border:1.5px solid var(--line); box-shadow:0 6px 20px rgba(0,0,0,0.07); z-index:3; display:flex; align-items:center; justify-content:center; font-size:1.8rem; }
+    .sv-ic { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:2.6rem; color:rgba(255,255,255,0.35); }
+    .sv-q  { position:absolute; bottom:22%; left:-18px; background:var(--wh); border-radius:10px; padding:0.85rem 1.1rem; box-shadow:0 8px 26px rgba(0,0,0,0.09); z-index:4; max-width:185px; }
+    .sv-qm { font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--am); line-height:0.8; margin-bottom:0.2rem; }
+    .sv-qt { font-family:'Cormorant Garamond',serif; font-size:0.88rem; font-style:italic; color:var(--ink); line-height:1.4; }
+
+    /* ABOUT */
+    .sa { padding:6rem 6%; background:var(--bg2); display:grid; grid-template-columns:1fr 1.6fr; gap:5rem; align-items:center; }
+    .sa-w { position:relative; }
+    .sa-p { width:100%; max-width:300px; aspect-ratio:3/4; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:4.5rem; overflow:hidden; background:var(--ph); box-shadow:0 14px 46px var(--phs); }
+    .sa-t1 { position:absolute; top:14px; right:-12px; background:var(--acc); color:var(--wh); font-size:0.62rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; padding:0.38rem 0.8rem; border-radius:50px; box-shadow:0 4px 14px rgba(0,0,0,0.14); z-index:2; }
+    .sa-t2 { position:absolute; bottom:18px; left:-12px; background:var(--sec); color:var(--st); font-size:0.62rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; padding:0.38rem 0.8rem; border-radius:50px; box-shadow:0 4px 14px rgba(0,0,0,0.1); z-index:2; }
+    .sa-lb { font-size:0.67rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--is); margin-bottom:0.6rem; }
+    .sa-h { font-family:'Cormorant Garamond',serif; font-size:clamp(1.9rem,3vw,2.8rem); font-weight:300; line-height:1.15; color:var(--ink); margin-bottom:1.4rem; letter-spacing:-0.01em; }
+    .sa-h em { font-style:italic; color:var(--acc); }
+    .sa-tx { font-size:0.93rem; color:var(--im); line-height:1.9; margin-bottom:0.9rem; max-width:500px; }
+    .sa-co { margin:1.4rem 0; padding:1.1rem 1.3rem; background:var(--ap); border-left:3px solid var(--acc); border-radius:0 8px 8px 0; }
+    .sa-co p { font-family:'Cormorant Garamond',serif; font-size:1.08rem; font-style:italic; font-weight:300; color:var(--ink); line-height:1.55; }
+    .sa-ln { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.83rem; font-weight:500; color:var(--acc); text-decoration:none; margin-top:0.5rem; transition:gap 0.2s; }
+    .sa-ln:hover { gap:0.65rem; }
+
+    /* COMING SOON */
+    .sc { padding:5.5rem 6%; background:var(--bg); position:relative; overflow:hidden; }
+    .sc::before { content:''; position:absolute; top:-60px; right:-60px; width:380px; height:380px; background:radial-gradient(circle, var(--b1) 0%, transparent 60%); pointer-events:none; }
+    .sc-i { max-width:560px; position:relative; z-index:2; }
+    .sc-bd { display:inline-flex; align-items:center; gap:0.5rem; background:var(--sp); border:1px solid rgba(0,0,0,0.05); color:var(--acc); font-size:0.67rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; padding:0.32rem 0.85rem; border-radius:50px; margin-bottom:1.6rem; }
+    .sc-h { font-family:'Cormorant Garamond',serif; font-size:clamp(1.9rem,3.2vw,3rem); font-weight:300; line-height:1.1; color:var(--ink); margin-bottom:1rem; letter-spacing:-0.01em; }
+    .sc-h em { font-style:italic; color:var(--acc); }
+    .sc-b { font-size:0.93rem; color:var(--im); line-height:1.88; margin-bottom:2rem; max-width:460px; }
+    .sc-f { display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:0.7rem; }
+    .sc-in { flex:1; min-width:210px; padding:0.82rem 1.2rem; border:1.5px solid var(--line); border-radius:50px; background:var(--wh); font-family:'Jost',sans-serif; font-size:0.85rem; color:var(--ink); outline:none; transition:border-color 0.2s; }
+    .sc-in::placeholder { color:var(--is); }
+    .sc-in:focus { border-color:var(--acc); }
+    .sc-sb { background:var(--acc); color:var(--wh); border:none; padding:0.82rem 1.8rem; border-radius:50px; font-family:'Jost',sans-serif; font-size:0.8rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; transition:all 0.22s; white-space:nowrap; }
+    .sc-sb:hover { background:var(--ah); transform:translateY(-1px); }
+    .sc-nt { font-size:0.7rem; color:var(--is); }
+
+    /* FOOTER */
+    .sf { background:var(--ink); padding:3.2rem 6% 2rem; }
+    .sf-tp { display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:2.2rem; border-bottom:1px solid rgba(255,255,255,0.07); flex-wrap:wrap; gap:2rem; }
+    .sf-lo { font-family:'Gilda Display',serif; font-size:1.15rem; font-weight:400; color:#FFF; text-decoration:none; letter-spacing:0.02em; display:block; margin-bottom:0.5rem; }
+    .sf-lo em { font-style:italic; color:var(--am); }
+    .sf-tg { font-size:0.82rem; color:rgba(255,255,255,0.35); line-height:1.7; max-width:280px; }
+    .sf-sc { display:flex; gap:0.7rem; }
+    .sf-s { width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; font-size:0.9rem; text-decoration:none; color:rgba(255,255,255,0.5); transition:all 0.2s; }
+    .sf-s:hover { border-color:var(--am); background:rgba(255,255,255,0.06); }
+    .sf-bt { padding-top:1.8rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; }
+    .sf-cp { font-size:0.7rem; color:rgba(255,255,255,0.2); }
+    .sf-nt { font-size:0.7rem; font-style:italic; font-family:'Cormorant Garamond',serif; color:rgba(255,255,255,0.2); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .sh-t > * { animation:fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) both; }
+    .sh-t > *:nth-child(1){animation-delay:0.05s}
+    .sh-t > *:nth-child(2){animation-delay:0.18s}
+    .sh-t > *:nth-child(3){animation-delay:0.32s}
+    .sh-t > *:nth-child(4){animation-delay:0.46s}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .sh{grid-template-columns:1fr;min-height:auto;padding:3.5rem 6% 3rem;gap:3rem}
+      .sh-v{height:300px}
+      .sa{grid-template-columns:1fr;gap:2.5rem;padding:4rem 6%}
+      .sa-p{max-width:220px}
+    }
+    @media(max-width:640px){
+      .sn-a{display:none}
+      .sh{padding:3rem 5%}
+      .sh-h{font-size:2.4rem}
+      .sa,.sc{padding:3.5rem 5%}
+      .sc-f{flex-direction:column}
+      .sf{padding:2.5rem 5% 1.5rem}
+      .sf-tp{flex-direction:column}
+      .ts,.tg{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SWITCHER -->
+  <div class="switcher">
+    <!-- DENIM BLUE GROUP -->
+    <button class="tab a1a" id="btn-1a" onclick="go('1a')">
+      <div class="sr"><div class="sw" style="background:#5A7E9E"></div><div class="sw" style="background:#C49090"></div></div>
+      <span class="tg">Denim Blue</span>
+      <span class="tn">1A</span>
+      <span class="ts">Warm Rose</span>
+    </button>
+    <div class="tdv"></div>
+    <button class="tab" id="btn-1c" onclick="go('1c')">
+      <div class="sr"><div class="sw" style="background:#5A7E9E"></div><div class="sw" style="background:#D4A8B0"></div></div>
+      <span class="tg">Denim Blue</span>
+      <span class="tn">1C</span>
+      <span class="ts">Dusty Blush</span>
+    </button>
+    <div class="tdv"></div>
+    <button class="tab" id="btn-1d" onclick="go('1d')">
+      <div class="sr"><div class="sw" style="background:#5A7E9E"></div><div class="sw" style="background:#DDBBBB"></div></div>
+      <span class="tg">Denim Blue</span>
+      <span class="tn">1D</span>
+      <span class="ts">Soft Rose</span>
+    </button>
+    <div class="tdv"></div>
+    <button class="tab" id="btn-1e" onclick="go('1e')">
+      <div class="sr"><div class="sw" style="background:#5A7E9E"></div><div class="sw" style="background:#E8CCCC"></div></div>
+      <span class="tg">Denim Blue</span>
+      <span class="tn">1E</span>
+      <span class="ts">Rose Mist</span>
+    </button>
+    <div class="tgdv"></div>
+    <!-- WARM SLATE GROUP -->
+    <button class="tab" id="btn-2a" onclick="go('2a')">
+      <div class="sr"><div class="sw" style="background:#6A8090"></div><div class="sw" style="background:#E0B8A8"></div></div>
+      <span class="tg">Warm Slate</span>
+      <span class="tn">2A</span>
+      <span class="ts">Pale Peach</span>
+    </button>
+    <div class="tdv"></div>
+    <button class="tab" id="btn-2b" onclick="go('2b')">
+      <div class="sr"><div class="sw" style="background:#6A8090"></div><div class="sw" style="background:#E0C8C4"></div></div>
+      <span class="tg">Warm Slate</span>
+      <span class="tn">2B</span>
+      <span class="ts">Blush White</span>
+    </button>
+    <div class="tgdv"></div>
+    <!-- DUSTY TEAL GROUP -->
+    <button class="tab" id="btn-3a" onclick="go('3a')">
+      <div class="sr"><div class="sw" style="background:#4A8080"></div><div class="sw" style="background:#C49090"></div></div>
+      <span class="tg">Dusty Teal</span>
+      <span class="tn">3A</span>
+      <span class="ts">Warm Rose</span>
+    </button>
+    <div class="tdv"></div>
+    <button class="tab" id="btn-3b" onclick="go('3b')">
+      <div class="sr"><div class="sw" style="background:#4A8080"></div><div class="sw" style="background:#E0B8A8"></div></div>
+      <span class="tg">Dusty Teal</span>
+      <span class="tn">3B</span>
+      <span class="ts">Pale Peach</span>
+    </button>
+  </div>
+
+  <!-- ══ 1A: DENIM BLUE + WARM ROSE ══ -->
+  <div class="site db s-wr p1a visible" id="site-1a">
+    <nav class="sn"><a href="#" class="sn-logo">J <em>Wanders</em> Off Again</a><div class="sn-r"><a href="#" class="sn-a">About</a><a href="#" class="sn-b">Stay in the Loop</a></div></nav>
+    <section class="sh"><div class="sh-t">
+      <div class="sh-k">Family · Solo · Real Life Travel</div>
+      <h1 class="sh-h">Real trips. Real stories.<em>No filter.</em><span class="sub">Where we went, what it cost, how it actually went.</span></h1>
+      <p class="sh-b">Not a highlight reel — just honest travel stories from a family figuring it out one trip at a time. From where we stayed to what went sideways.</p>
+      <div class="sh-ac"><a href="#" class="sh-btn">Meet J</a><a href="#" class="sh-l">Follow the journey →</a></div>
+    </div><div class="sh-v">
+      <div class="sv sv-m"><div class="sv-ic">🌍</div></div><div class="sv sv-lo"><div class="sv-ic">🧒</div></div>
+      <div class="sv sv-ac">✈️</div>
+      <div class="sv-q"><div class="sv-qm">"</div><div class="sv-qt">Not another perfect mum blog.</div></div>
+    </div></section>
+    <section class="sa"><div class="sa-w"><div class="sa-p">🧳</div><div class="sa-t1">Honest Traveller</div><div class="sa-t2">Real Stories</div></div>
+    <div><div class="sa-lb">The wanderer behind the blog</div><h2 class="sa-h">Hi, I'm J. I wander off.<br><em>A lot.</em></h2>
+    <p class="sa-tx">I'm a parent, a solo adventurer, and someone who travels in all the ways — family trips, girls getaways, romantic escapes, and the occasional solo disappearing act.</p>
+    <p class="sa-tx">I share the honest version of every trip. Where we stayed and why, what it cost, what the kids thought, what went wrong, and whether I'd do it again.</p>
+    <div class="sa-co"><p>"I'm not an expert. I'm just someone who refuses to let life get in the way of a good adventure."</p></div>
+    <a href="#" class="sa-ln">Come along for the ride →</a></div></section>
+    <section class="sc"><div class="sc-i">
+      <div class="sc-bd">✦ &nbsp; First posts on the way</div>
+      <h2 class="sc-h">The blog is just<br><em>getting started.</em></h2>
+      <p class="sc-b">I'm working on my first posts right now — no fluff, just real stories. Drop your email and you'll be first to know when something goes live.</p>
+      <div class="sc-f"><input type="email" class="sc-in" placeholder="your@email.com"/><button class="sc-sb">Notify me</button></div>
+      <p class="sc-nt">No spam. No selling your data. Just updates when I post.</p>
+    </div></section>
+    <footer class="sf"><div class="sf-tp"><div><a href="#" class="sf-lo">J <em>Wanders</em> Off Again</a><p class="sf-tg">Real travel. Honest stories. All the messy bits included.</p></div><div class="sf-sc"><a href="#" class="sf-s">📸</a><a href="#" class="sf-s">📌</a><a href="#" class="sf-s">🎵</a></div></div><div class="sf-bt"><span class="sf-cp">© 2025 J Wanders Off Again</span><span class="sf-nt">"Still figuring it out, one trip at a time."</span></div></footer>
+  </div>
+
+  <!-- ══ 1C: DENIM BLUE + DUSTY BLUSH ══ -->
+  <div class="site db s-db2 p1c" id="site-1c">
+    <nav class="sn"><a href="#" class="sn-logo">J <em>Wanders</em> Off Again</a><div class="sn-r"><a href="#" class="sn-a">About</a><a href="#" class="sn-b">Stay in the Loop</a></div></nav>
+    <section class="sh"><div class="sh-t">
+      <div class="sh-k">Family · Solo · Real Life Travel</div>
+      <h1 class="sh-h">Real trips. Real stories.<em>No filter.</em><span class="sub">Where we went, what it cost, how it actually went.</span></h1>
+      <p class="sh-b">Not a highlight reel — just honest travel stories from a family figuring it out one trip at a time. From where we stayed to what went sideways.</p>
+      <div class="sh-ac"><a href="#" class="sh-btn">Meet J</a><a href="#" class="sh-l">Follow the journey →</a></div>
+    </div><div class="sh-v">
+      <div class="sv sv-m"><div class="sv-ic">🌍</div></div><div class="sv sv-lo"><div class="sv-ic">🧒</div></div>
+      <div class="sv sv-ac">✈️</div>
+      <div class="sv-q"><div class="sv-qm">"</div><div class="sv-qt">Not another perfect mum blog.</div></div>
+    </div></section>
+    <section class="sa"><div class="sa-w"><div class="sa-p">🧳</div><div class="sa-t1">Honest Traveller</div><div class="sa-t2">Real Stories</div></div>
+    <div><div class="sa-lb">The wanderer behind the blog</div><h2 class="sa-h">Hi, I'm J. I wander off.<br><em>A lot.</em></h2>
+    <p class="sa-tx">I'm a parent, a solo adventurer, and someone who travels in all the ways — family trips, girls getaways, romantic escapes, and the occasional solo disappearing act.</p>
+    <p class="sa-tx">I share the honest version of every trip. Where we stayed and why, what it cost, what the kids thought, what went wrong, and whether I'd do it again.</p>
+    <div class="sa-co"><p>"I'm not an expert. I'm just someone who refuses to let life get in the way of a good adventure."</p></div>
+    <a href="#" class="sa-ln">Come along for the ride →</a></div></section>
+    <section class="sc"><div class="sc-i">
+      <div class="sc-bd">✦ &nbsp; First posts on the way</div>
+      <h2 class="sc-h">The blog is just<br><em>getting started.</em></h2>
+      <p class="sc-b">I'm working on my first posts right now — no fluff, just real stories. Drop your email and you'll be first to know when something goes live.</p>
+      <div class="sc-f"><input type="email" class="sc-in" placeholder="your@email.com"/><button class="sc-sb">Notify me</button></div>
+      <p class="sc-nt">No spam. No selling your data. Just updates when I post.</p>
+    </div></section>
+    <footer class="sf"><div class="sf-tp"><div><a href="#" class="sf-lo">J <em>Wanders</em> Off Again</a><p class="sf-tg">Real travel. Honest stories. All the messy bits included.</p></div><div class="sf-sc"><a href="#" class="sf-s">📸</a><a href="#" class="sf-s">📌</a><a href="#" class="sf-s">🎵</a></div></div><div class="sf-bt"><span class="sf-cp">© 2025 J Wanders Off Again</span><span class="sf-nt">"Still figuring it out, one trip at a time."</span></div></footer>
+  </div>
+
+  <!-- ══ 1D: DENIM BLUE + SOFT ROSE ══ -->
+  <div class="site db s-sr p1d" id="site-1d">
+    <nav class="sn"><a href="#" class="sn-logo">J <em>Wanders</em> Off Again</a><div class="sn-r"><a href="#" class="sn-a">About</a><a href="#" class="sn-b">Stay in the Loop</a></div></nav>
+    <section class="sh"><div class="sh-t">
+      <div class="sh-k">Family · Solo · Real Life Travel</div>
+      <h1 class="sh-h">Real trips. Real stories.<em>No filter.</em><span class="sub">Where we went, what it cost, how it actually went.</span></h1>
+      <p class="sh-b">Not a highlight reel — just honest travel stories from a family figuring it out one trip at a time. From where we stayed to what went sideways.</p>
+      <div class="sh-ac"><a href="#" class="sh-btn">Meet J</a><a href="#" class="sh-l">Follow the journey →</a></div>
+    </div><div class="sh-v">
+      <div class="sv sv-m"><div class="sv-ic">🌍</div></div><div class="sv sv-lo"><div class="sv-ic">🧒</div></div>
+      <div class="sv sv-ac">✈️</div>
+      <div class="sv-q"><div class="sv-qm">"</div><div class="sv-qt">Not another perfect mum blog.</div></div>
+    </div></section>
+    <section class="sa"><div class="sa-w"><div class="sa-p">🧳</div><div class="sa-t1">Honest Traveller</div><div class="sa-t2">Real Stories</div></div>
+    <div><div class="sa-lb">The wanderer behind the blog</div><h2 class="sa-h">Hi, I'm J. I wander off.<br><em>A lot.</em></h2>
+    <p class="sa-tx">I'm a parent, a solo adventurer, and someone who travels in all the ways — family trips, girls getaways, romantic escapes, and the occasional solo disappearing act.</p>
+    <p class="sa-tx">I share the honest version of every trip. Where we stayed and why, what it cost, what the kids thought, what went wrong, and whether I'd do it again.</p>
+    <div class="sa-co"><p>"I'm not an expert. I'm just someone who refuses to let life get in the way of a good adventure."</p></div>
+    <a href="#" class="sa-ln">Come along for the ride →</a></div></section>
+    <section class="sc"><div class="sc-i">
+      <div class="sc-bd">✦ &nbsp; First posts on the way</div>
+      <h2 class="sc-h">The blog is just<br><em>getting started.</em></h2>
+      <p class="sc-b">I'm working on my first posts right now — no fluff, just real stories. Drop your email and you'll be first to know when something goes live.</p>
+      <div class="sc-f"><input type="email" class="sc-in" placeholder="your@email.com"/><button class="sc-sb">Notify me</button></div>
+      <p class="sc-nt">No spam. No selling your data. Just updates when I post.</p>
+    </div></section>
+    <footer class="sf"><div class="sf-tp"><div><a href="#" class="sf-lo">J <em>Wanders</em> Off Again</a><p class="sf-tg">Real travel. Honest stories. All the messy bits included.</p></div><div class="sf-sc"><a href="#" class="sf-s">📸</a><a href="#" class="sf-s">📌</a><a href="#" class="sf-s">🎵</a></div></div><div class="sf-bt"><span class="sf-cp">© 2025 J Wanders Off Again</span><span class="sf-nt">"Still figuring it out, one trip at a time."</span></div></footer>
+  </div>
+
+  <!-- ══ 1E: DENIM BLUE + ROSE MIST ══ -->
+  <div class="site db s-rm p1e" id="site-1e">
+    <nav class="sn"><a href="#" class="sn-logo">J <em>Wanders</em> Off Again</a><div class="sn-r"><a href="#" class="sn-a">About</a><a href="#" class="sn-b">Stay in the Loop</a></div></nav>
+    <section class="sh"><div class="sh-t">
+      <div class="sh-k">Family · Solo · Real Life Travel</div>
+      <h1 class="sh-h">Real trips. Real stories.<em>No filter.</em><span class="sub">Where we went, what it cost, how it actually went.</span></h1>
+      <p class="sh-b">Not a highlight reel — just honest travel stories from a family figuring it out one trip at a time. From where we stayed to what went sideways.</p>
+      <div class="sh-ac"><a href="#" class="sh-btn">Meet J</a><a href="#" class="sh-l">Follow the journey →</a></div>
+    </div><div class="sh-v">
+      <div class="sv sv-m"><div class="sv-ic">🌍</div></div><div class="sv sv-lo"><div class="sv-ic">🧒</div></div>
+      <div class="sv sv-ac">✈️</div>
+      <div class="sv-q"><div class="sv-qm">"</div><div class="sv-qt">Not another perfect mum blog.</div></div>
+    </div></section>
+    <section class="sa"><div class="sa-w"><div class="sa-p">🧳</div><div class="sa-t1">Honest Traveller</div><div class="sa-t2">Real Stories</div></div>
+    <div><div class="sa-lb">The wanderer behind the blog</div><h2 class="sa-h">Hi, I'm J. I wander off.<br><em>A lot.</em></h2>
+    <p class="sa-tx">I'm a parent, a solo adventurer, and someone who travels in all the ways — family trips, girls getaways, romantic escapes, and the occasional solo disappearing act.</p>
+    <p class="sa-tx">I share the honest version of every trip. Where we stayed and why, what it cost, what the kids thought, what went wrong, and whether I'd do it again.</p>
+    <div class="sa-co"><p>"I'm not an expert. I'm just someone who refuses to let life get in the way of a good adventure."</p></div>
+    <a href="#" class="sa-ln">Come along for the ride →</a></div></section>
+    <section class="sc"><div class="sc-i">
+      <div class="sc-bd">✦ &nbsp; First posts on the way</div>
+      <h2 class="sc-h">The blog is just<br><em>getting started.</em></h2>
+      <p class="sc-b">I'm working on my first posts right now — no fluff, just real stories. Drop your email and you'll be first to know when something goes live.</p>
+      <div class="sc-f"><input type="email" class="sc-in" placeholder="your@email.com"/><button class="sc-sb">Notify me</button></div>
+      <p class="sc-nt">No spam. No selling your data. Just updates when I post.</p>
+    </div></section>
+    <footer class="sf"><div class="sf-tp"><div><a href="#" class="sf-lo">J <em>Wanders</em> Off Again</a><p class="sf-tg">Real travel. Honest stories. All the messy bits included.</p></div><div class="sf-sc"><a href="#" class="sf-s">📸</a><a href="#" class="sf-s">📌</a><a href="#" class="sf-s">🎵</a></div></div><div class="sf-bt"><span class="sf-cp">© 2025 J Wanders Off Again</span><span class="sf-nt">"Still figuring it out, one trip at a time."</span></div></footer>
+  </div>
+
+  <!-- ══ 2A: WARM SLATE + PALE PEACH ══ -->
+  <div class="site ws s-pp p2a" id="site-2a">
+    <nav class="sn"><a href="#" class="sn-logo">J <em>Wanders</em> Off Again</a><div class="sn-r"><a href="#" class="sn-a">About</a><a href="#" class="sn-b">Stay in the Loop</a></div></nav>
+    <section class="sh"><div class="sh-t">
+      <div class="sh-k">Family · Solo · Real Life Travel</div>
+      <h1 class="sh-h">Real trips. Real stories.<em>No filter.</em><span class="sub">Where we went, what it cost, how it actually went.</span></h1>
+      <p class="sh-b">Not a highlight reel — just honest travel stories from a family figuring it out one trip at a time. From where we stayed to what went sideways.</p>
+      <div class="sh-ac"><a href="#" class="sh-btn">Meet J</a><a href="#" class="sh-l">Follow the journey →</a></div>
+    </div><div class="sh-v">
+      <div class="sv sv-m"><div class="sv-ic">🌍</div></div><div class="sv sv-lo"><div class="sv-ic">🧒</div></div>
+      <div class="sv sv-ac">✈️</div>
+      <div class="sv-q"><div class="sv-qm">"</div><div class="sv-qt">Not another perfect mum blog.</div></div>
+    </div></section>
+    <section class="sa"><div class="sa-w"><div class="sa-p">🧳</div><div class="sa-t1">Honest Traveller</div><div class="sa-t2">Real Stories</div></div>
+    <div><div class="sa-lb">The wanderer behind the blog</div><h2 class="sa-h">Hi, I'm J. I wander off.<br><em>A lot.</em></h2>
+    <p class="sa-tx">I'm a parent, a solo adventurer, and someone who travels in all the ways — family trips, girls getaways, romantic escapes, and the occasional solo disappearing act.</p>
+    <p class="sa-tx">I share the honest version of every trip. Where we stayed and why, what it cost, what the kids thought, what went wrong, and whether I'd do it again.</p>
+    <div class="sa-co"><p>"I'm not an expert. I'm just someone who refuses to let life get in the way of a good adventure."</p></div>
+    <a href="#" class="sa-ln">Come along for the ride →</a></div></section>
+    <section class="sc"><div class="sc-i">
+      <div class="sc-bd">✦ &nbsp; First posts on the way</div>
+      <h2 class="sc-h">The blog is just<br><em>getting started.</em></h2>
+      <p class="sc-b">I'm working on my first posts right now — no fluff, just real stories. Drop your email and you'll be first to know when something goes live.</p>
+      <div class="sc-f"><input type="email" class="sc-in" placeholder="your@email.com"/><button class="sc-sb">Notify me</button></div>
+      <p class="sc-nt">No spam. No selling your data. Just updates when I post.</p>
+    </div></section>
+    <footer class="sf"><div class="sf-tp"><div><a href="#" class="sf-lo">J <em>Wanders</em> Off Again</a><p class="sf-tg">Real travel. Honest stories. All the messy bits included.</p></div><div class="sf-sc"><a href="#" class="sf-s">📸</a><a href="#" class="sf-s">📌</a><a href="#" class="sf-s">🎵</a></div></div><div class="sf-bt"><span class="sf-cp">© 2025 J Wanders Off Again</span><span class="sf-nt">"Still figuring it out, one trip at a time."</span></div></footer>
+  </div>
+
+  <!-- ══ 2B: WARM SLATE + BLUSH WHITE ══ -->
+  <div class="site ws s-bw p2b" id="site-2b">
+    <nav class="sn"><a href="#" class="sn-logo">J <em>Wanders</em> Off Again</a><div class="sn-r"><a href="#" class="sn-a">About</a><a href="#" class="sn-b">Stay in the Loop</a></div></nav>
+    <section class="sh"><div class="sh-t">
+      <div class="sh-k">Family · Solo · Real Life Travel</div>
+      <h1 class="sh-h">Real trips. Real stories.<em>No filter.</em><span class="sub">Where we went, what it cost, how it actually went.</span></h1>
+      <p class="sh-b">Not a highlight reel — just honest travel stories from a family figuring it out one trip at a time. From where we stayed to what went sideways.</p>
+      <div class="sh-ac"><a href="#" class="sh-btn">Meet J</a><a href="#" class="sh-l">Follow the journey →</a></div>
+    </div><div class="sh-v">
+      <div class="sv sv-m"><div class="sv-ic">🌍</div></div><div class="sv sv-lo"><div class="sv-ic">🧒</div></div>
+      <div class="sv sv-ac">✈️</div>
+      <div class="sv-q"><div class="sv-qm">"</div><div class="sv-qt">Not another perfect mum blog.</div></div>
+    </div></section>
+    <section class="sa"><div class="sa-w"><div class="sa-p">🧳</div><div class="sa-t1">Honest Traveller</div><div class="sa-t2">Real Stories</div></div>
+    <div><div class="sa-lb">The wanderer behind the blog</div><h2 class="sa-h">Hi, I'm J. I wander off.<br><em>A lot.</em></h2>
+    <p class="sa-tx">I'm a parent, a solo adventurer, and someone who travels in all the ways — family trips, girls getaways, romantic escapes, and the occasional solo disappearing act.</p>
+    <p class="sa-tx">I share the honest version of every trip. Where we stayed and why, what it cost, what the kids thought, what went wrong, and whether I'd do it again.</p>
+    <div class="sa-co"><p>"I'm not an expert. I'm just someone who refuses to let life get in the way of a good adventure."</p></div>
+    <a href="#" class="sa-ln">Come along for the ride →</a></div></section>
+    <section class="sc"><div class="sc-i">
+      <div class="sc-bd">✦ &nbsp; First posts on the way</div>
+      <h2 class="sc-h">The blog is just<br><em>getting started.</em></h2>
+      <p class="sc-b">I'm working on my first posts right now — no fluff, just real stories. Drop your email and you'll be first to know when something goes live.</p>
+      <div class="sc-f"><input type="email" class="sc-in" placeholder="your@email.com"/><button class="sc-sb">Notify me</button></div>
+      <p class="sc-nt">No spam. No selling your data. Just updates when I post.</p>
+    </div></section>
+    <footer class="sf"><div class="sf-tp"><div><a href="#" class="sf-lo">J <em>Wanders</em> Off Again</a><p class="sf-tg">Real travel. Honest stories. All the messy bits included.</p></div><div class="sf-sc"><a href="#" class="sf-s">📸</a><a href="#" class="sf-s">📌</a><a href="#" class="sf-s">🎵</a></div></div><div class="sf-bt"><span class="sf-cp">© 2025 J Wanders Off Again</span><span class="sf-nt">"Still figuring it out, one trip at a time."</span></div></footer>
+  </div>
+
+  <!-- ══ 3A: DUSTY TEAL + WARM ROSE ══ -->
+  <div class="site dt s-wr2 p3a" id="site-3a">
+    <nav class="sn"><a href="#" class="sn-logo">J <em>Wanders</em> Off Again</a><div class="sn-r"><a href="#" class="sn-a">About</a><a href="#" class="sn-b">Stay in the Loop</a></div></nav>
+    <section class="sh"><div class="sh-t">
+      <div class="sh-k">Family · Solo · Real Life Travel</div>
+      <h1 class="sh-h">Real trips. Real stories.<em>No filter.</em><span class="sub">Where we went, what it cost, how it actually went.</span></h1>
+      <p class="sh-b">Not a highlight reel — just honest travel stories from a family figuring it out one trip at a time. From where we stayed to what went sideways.</p>
+      <div class="sh-ac"><a href="#" class="sh-btn">Meet J</a><a href="#" class="sh-l">Follow the journey →</a></div>
+    </div><div class="sh-v">
+      <div class="sv sv-m"><div class="sv-ic">🌍</div></div><div class="sv sv-lo"><div class="sv-ic">🧒</div></div>
+      <div class="sv sv-ac">✈️</div>
+      <div class="sv-q"><div class="sv-qm">"</div><div class="sv-qt">Not another perfect mum blog.</div></div>
+    </div></section>
+    <section class="sa"><div class="sa-w"><div class="sa-p">🧳</div><div class="sa-t1">Honest Traveller</div><div class="sa-t2">Real Stories</div></div>
+    <div><div class="sa-lb">The wanderer behind the blog</div><h2 class="sa-h">Hi, I'm J. I wander off.<br><em>A lot.</em></h2>
+    <p class="sa-tx">I'm a parent, a solo adventurer, and someone who travels in all the ways — family trips, girls getaways, romantic escapes, and the occasional solo disappearing act.</p>
+    <p class="sa-tx">I share the honest version of every trip. Where we stayed and why, what it cost, what the kids thought, what went wrong, and whether I'd do it again.</p>
+    <div class="sa-co"><p>"I'm not an expert. I'm just someone who refuses to let life get in the way of a good adventure."</p></div>
+    <a href="#" class="sa-ln">Come along for the ride →</a></div></section>
+    <section class="sc"><div class="sc-i">
+      <div class="sc-bd">✦ &nbsp; First posts on the way</div>
+      <h2 class="sc-h">The blog is just<br><em>getting started.</em></h2>
+      <p class="sc-b">I'm working on my first posts right now — no fluff, just real stories. Drop your email and you'll be first to know when something goes live.</p>
+      <div class="sc-f"><input type="email" class="sc-in" placeholder="your@email.com"/><button class="sc-sb">Notify me</button></div>
+      <p class="sc-nt">No spam. No selling your data. Just updates when I post.</p>
+    </div></section>
+    <footer class="sf"><div class="sf-tp"><div><a href="#" class="sf-lo">J <em>Wanders</em> Off Again</a><p class="sf-tg">Real travel. Honest stories. All the messy bits included.</p></div><div class="sf-sc"><a href="#" class="sf-s">📸</a><a href="#" class="sf-s">📌</a><a href="#" class="sf-s">🎵</a></div></div><div class="sf-bt"><span class="sf-cp">© 2025 J Wanders Off Again</span><span class="sf-nt">"Still figuring it out, one trip at a time."</span></div></footer>
+  </div>
+
+  <!-- ══ 3B: DUSTY TEAL + PALE PEACH ══ -->
+  <div class="site dt s-pp p3b" id="site-3b">
+    <nav class="sn"><a href="#" class="sn-logo">J <em>Wanders</em> Off Again</a><div class="sn-r"><a href="#" class="sn-a">About</a><a href="#" class="sn-b">Stay in the Loop</a></div></nav>
+    <section class="sh"><div class="sh-t">
+      <div class="sh-k">Family · Solo · Real Life Travel</div>
+      <h1 class="sh-h">Real trips. Real stories.<em>No filter.</em><span class="sub">Where we went, what it cost, how it actually went.</span></h1>
+      <p class="sh-b">Not a highlight reel — just honest travel stories from a family figuring it out one trip at a time. From where we stayed to what went sideways.</p>
+      <div class="sh-ac"><a href="#" class="sh-btn">Meet J</a><a href="#" class="sh-l">Follow the journey →</a></div>
+    </div><div class="sh-v">
+      <div class="sv sv-m"><div class="sv-ic">🌍</div></div><div class="sv sv-lo"><div class="sv-ic">🧒</div></div>
+      <div class="sv sv-ac">✈️</div>
+      <div class="sv-q"><div class="sv-qm">"</div><div class="sv-qt">Not another perfect mum blog.</div></div>
+    </div></section>
+    <section class="sa"><div class="sa-w"><div class="sa-p">🧳</div><div class="sa-t1">Honest Traveller</div><div class="sa-t2">Real Stories</div></div>
+    <div><div class="sa-lb">The wanderer behind the blog</div><h2 class="sa-h">Hi, I'm J. I wander off.<br><em>A lot.</em></h2>
+    <p class="sa-tx">I'm a parent, a solo adventurer, and someone who travels in all the ways — family trips, girls getaways, romantic escapes, and the occasional solo disappearing act.</p>
+    <p class="sa-tx">I share the honest version of every trip. Where we stayed and why, what it cost, what the kids thought, what went wrong, and whether I'd do it again.</p>
+    <div class="sa-co"><p>"I'm not an expert. I'm just someone who refuses to let life get in the way of a good adventure."</p></div>
+    <a href="#" class="sa-ln">Come along for the ride →</a></div></section>
+    <section class="sc"><div class="sc-i">
+      <div class="sc-bd">✦ &nbsp; First posts on the way</div>
+      <h2 class="sc-h">The blog is just<br><em>getting started.</em></h2>
+      <p class="sc-b">I'm working on my first posts right now — no fluff, just real stories. Drop your email and you'll be first to know when something goes live.</p>
+      <div class="sc-f"><input type="email" class="sc-in" placeholder="your@email.com"/><button class="sc-sb">Notify me</button></div>
+      <p class="sc-nt">No spam. No selling your data. Just updates when I post.</p>
+    </div></section>
+    <footer class="sf"><div class="sf-tp"><div><a href="#" class="sf-lo">J <em>Wanders</em> Off Again</a><p class="sf-tg">Real travel. Honest stories. All the messy bits included.</p></div><div class="sf-sc"><a href="#" class="sf-s">📸</a><a href="#" class="sf-s">📌</a><a href="#" class="sf-s">🎵</a></div></div><div class="sf-bt"><span class="sf-cp">© 2025 J Wanders Off Again</span><span class="sf-nt">"Still figuring it out, one trip at a time."</span></div></footer>
+  </div>
+
+  <script>
+    const map = {'1a':'a1a','1c':'a1c','1d':'a1d','1e':'a1e','2a':'a2a','2b':'a2b','3a':'a3a','3b':'a3b'};
+    function go(opt) {
+      document.querySelectorAll('.site').forEach(s => s.classList.remove('visible'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove(...Object.values(map)));
+      document.getElementById('site-' + opt).classList.add('visible');
+      document.getElementById('btn-' + opt).classList.add(map[opt]);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
