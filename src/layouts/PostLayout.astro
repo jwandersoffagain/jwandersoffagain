@@ -106,15 +106,19 @@ const {
   }
 
   .hero-title {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: clamp(2.8rem, 6vw, 5rem);
     font-weight: 300;
-    line-height: 1.05;
+    line-height: 1.07;
     color: var(--white);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
   }
 
-  .hero-title em { font-style: italic; color: var(--blush); }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--blush);
+  }
 
   .hero-meta {
     margin-top: 1rem;
@@ -135,7 +139,7 @@ const {
 
   /* ── POST BODY ── */
   .post-wrap {
-    max-width: 920px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 4rem 6%;
   }
@@ -153,16 +157,7 @@ const {
     margin-right: auto;
   }
 
-  /* ── DROP CAP ── */
-  .post-body > p:first-of-type::first-letter {
-    font-family: var(--font-serif);
-    font-size: 3.6rem;
-    font-weight: 400;
-    float: left;
-    line-height: 0.88;
-    margin: 0.35rem 0.6rem 0 0;
-    color: var(--denim);
-  }
+  /* drop cap removed — doesn't fit handwritten/journal vibe */
 
   .post-body p strong { color: var(--ink); font-weight: 500; }
 
@@ -179,7 +174,7 @@ const {
   }
 
   .post-section h2 {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-weight: 300;
     line-height: 1.15;
@@ -187,7 +182,11 @@ const {
     letter-spacing: -0.01em;
   }
 
-  .post-section h2 em { font-style: italic; color: var(--denim); }
+  .post-section h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--denim);
+  }
 
   /* ── IMAGES ── */
   .post-img {
@@ -203,8 +202,8 @@ const {
   }
 
   .post-img-wide {
-    max-width: 720px;
-    max-height: 720px;
+    max-width: 880px;
+    max-height: 760px;
   }
 
   .post-img-grid {
@@ -268,20 +267,57 @@ const {
   .post-tip-blush p { margin-bottom: 0.9rem !important; }
   .post-tip-blush p:last-child { margin-bottom: 0 !important; }
 
-  /* ── PULL QUOTE ── */
-  .post-pullquote {
-    margin: 3rem auto;
-    max-width: 580px;
-    padding: 2rem 1.5rem;
-    border-top: 1px solid var(--ivory-line);
-    border-bottom: 1px solid var(--ivory-line);
+  /* ── BY THE NUMBERS ── */
+  .post-stats {
+    max-width: 660px;
+    margin: 0 auto 3rem;
     text-align: center;
     font-family: var(--font-serif);
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
-    font-weight: 300;
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
     font-style: italic;
-    line-height: 1.65;
-    color: var(--ink);
+    line-height: 1.6;
+    color: var(--ink-mid);
+    padding: 1.2rem 0;
+    border-top: 1px solid var(--ivory-line);
+    border-bottom: 1px solid var(--ivory-line);
+  }
+
+  /* ── COST TABLE SECTION ── */
+  .cost-table-title {
+    max-width: 660px;
+    margin: 2.5rem auto 0.4rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--denim);
+  }
+
+  .cost-table-note {
+    max-width: 660px;
+    margin: 0 auto 1.2rem;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .cost-table + .cost-table-title { margin-top: 3rem; }
+
+  /* ── PULL QUOTE ── */
+  .post-pullquote {
+    margin: 2rem auto;
+    max-width: 540px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--ink-mid);
+    border-top: 1px solid var(--ivory-line);
+    border-bottom: 1px solid var(--ivory-line);
   }
 
   /* ── IN-POST TOC ── */
@@ -333,8 +369,9 @@ const {
   /* ── COST TABLE ── */
   .cost-table {
     width: 100%;
+    max-width: 660px;
+    margin: 1.5rem auto;
     border-collapse: collapse;
-    margin: 1.5rem 0;
     font-size: 0.88rem;
   }
 
@@ -413,10 +450,10 @@ const {
   }
 
   .post-footer-quote p {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: clamp(0.98rem, 1.6vw, 1.15rem) !important;
     font-style: italic;
-    line-height: 1.8;
+    line-height: 1.75;
     color: var(--ink-mid) !important;
     margin-bottom: 0 !important;
   }
